@@ -1,11 +1,13 @@
 import React from "react";
 import { styled } from "styled-components";
 import CSSContentBox from "./components/CSSContentBox";
+import JSContentBox from "./components/JSContentBox";
 
 function App() {
   return (
     <Container>
       <CSSContentBox />
+      <JSContentBox />
     </Container>
   );
 }

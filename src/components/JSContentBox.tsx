@@ -1,15 +1,18 @@
 import React from "react";
 import { styled } from "styled-components";
 
-const CSSContentBox = () => {
+const JSContentBox = () => {
   const ref = React.useRef<HTMLStyleElement>(null);
   const [content, setContent] = React.useState("");
 
   const handleChange = (e: React.KeyboardEvent<HTMLStyleElement>) => {
     e.preventDefault();
     const { textContent } = e.currentTarget;
-
     if (textContent) setContent(textContent);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLStyleElement>) => {
+    if (e.key === ";") eval(content);
   };
 
   const focusContentEditTextToEnd = (element: HTMLElement) => {
@@ -37,6 +40,7 @@ const CSSContentBox = () => {
         contentEditable
         suppressContentEditableWarning
         onInput={handleChange}
+        onKeyDown={handleKeyDown}
       >
         {content}
       </Box>
@@ -56,8 +60,7 @@ const Box = styled.style`
   width: 400px;
   height: 400px;
   padding: 20px;
-  background-color: cornflowerblue;
-  color: white;
+  background-color: #f7df1c;
   border: 2px solid black;
 `;
 
@@ -67,8 +70,8 @@ const Title = styled.span`
   font-weight: 600;
 
   &:after {
-    content: "CSS 코드를 작성해보세요!";
+    content: "JS 코드를 작성해보세요!";
   }
 `;
 
-export default CSSContentBox;
+export default JSContentBox;
