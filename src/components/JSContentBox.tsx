@@ -12,6 +12,7 @@ const JSContentBox = () => {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLStyleElement>) => {
+    // eslint-disable-next-line
     if (e.key === ";") eval(content);
   };
 
